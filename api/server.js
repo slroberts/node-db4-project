@@ -1,6 +1,7 @@
 const express = require('express');
 const helmet = require('helmet');
 const cors = require('cors');
+const RecipeRouter = require('../recipes/recipe-router.js');
 
 const server = express();
 
@@ -8,8 +9,7 @@ server.use(helmet());
 server.use(cors());
 server.use(logger);
 server.use(express.json());
-
-//Will add Router when completed
+server.use('/api/recipes', RecipeRouter);
 
 server.get('/', (req, res) => {
   res.status(200).json({
